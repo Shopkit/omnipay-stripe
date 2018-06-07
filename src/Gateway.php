@@ -241,6 +241,25 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * Update a charge
+     *
+     * Updates the specified charge by setting the values of the parameters
+     * passed. Any parameters not provided will be left unchanged.
+     *
+     * The ID of an existing customer that will be associated with this request.
+     * This field may only be updated if there is no existing associated
+     * customer with this charge.
+     *
+     * @param array $parameters
+     *
+     * @return \Omnipay\Stripe\Message\UpdateCharge
+     */
+    public function updateCharge(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Stripe\Message\UpdateCharge', $parameters);
+    }
+
+    /**
      * Fetch Transaction Request.
      *
      * @param array $parameters
