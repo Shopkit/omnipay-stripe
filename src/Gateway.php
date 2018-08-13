@@ -777,6 +777,6 @@ class Gateway extends AbstractGateway
      */
     public function createSource(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Stripe\Message\createSourceRequest', $parameters);
+        return $this->createRequest('\Omnipay\Stripe\Message\CreateSourceRequest', $parameters);
     }
 }
