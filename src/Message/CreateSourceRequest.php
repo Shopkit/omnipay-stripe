@@ -92,6 +92,46 @@ class CreateSourceRequest extends AbstractRequest
         return $this->getParameter('redirect');
     }
 
+    /**
+     * Set the source usage
+     *
+     * @return CreateSourceRequest provides a fluent interface.
+     */
+    public function setUsage($usage)
+    {
+        return $this->setParameter('usage', $usage);
+    }
+
+    /**
+     * Get the source usage
+     *
+     * @return string
+     */
+    public function getUsage()
+    {
+        return $this->getParameter('usage');
+    }
+
+    /**
+     * Get the source card
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->getParameter('source');
+    }
+
+    /**
+     * Get the token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->getParameter('token');
+    }
+
     public function getData()
     {
         $this->validate('type', 'amount', 'currency');
@@ -102,16 +142,30 @@ class CreateSourceRequest extends AbstractRequest
             'currency' => $this->getCurrency(),
         );
 
+        if ($this->getType() == 'three_d_secure') {
+            $data['three_d_secure'] = array(
+                'card' => $this->getSource(),
+            );
+        }
+
+        if ($this->getUsage()) {
+            $data['usage'] = $this->getUsage();
+        }
+
+        if ($this->getType() == 'card') {
+            $data['token'] = $this->getToken();
+        }
+
         if ($this->getOwner()) {
             $data['owner'] = $this->getOwner();
         }
 
-        if ($this->getRedirect()) {
-            $data['redirect'] = $this->getRedirect();
-        }
-
         if ($this->getMetadata()) {
             $data['metadata'] = $this->getMetadata();
+        }
+
+        if ($this->getRedirect()) {
+            $data['redirect'] = $this->getRedirect();
         }
 
         return $data;
