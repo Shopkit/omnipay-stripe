@@ -17,7 +17,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "omnipay/stripe": "~2.0"
+        "shopkit/omnipay-stripe": "~2.0"
     }
 }
 ```
