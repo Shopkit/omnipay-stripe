@@ -1,5 +1,5 @@
 {
-    "name": "omnipay/stripe",
+    "name": "Shopkit/omnipay-stripe",
     "type": "library",
     "description": "Stripe driver for the Omnipay payment processing library",
     "keywords": [
@@ -20,6 +20,10 @@
         {
             "name": "Omnipay Contributors",
             "homepage": "https://github.com/thephpleague/omnipay-stripe/contributors"
+        },
+        {
+            "name": "Shopkit",
+            "homepage": "https://github.com/Shopkit/omnipay-stripe"
         }
     ],
     "autoload": {
